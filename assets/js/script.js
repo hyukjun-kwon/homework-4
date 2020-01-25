@@ -5,14 +5,14 @@ const CORRECT_BUTTON_CLASS = "btn btn-success btn-md btn-block text-left";
 const WRONG_BUTTON_CLASS = "btn btn-danger btn-md btn-block text-left";
 
 // How many problem in a quiz?
-const NUM_PROBLEM = 10;
+const NUM_PROBLEM = 3;
 
 /**************************************************** Main Function ****************************************************/
 let score = {
   attempt: 0,
   solved: 0,
   solvedLast: false
-}
+};
 
 // Shuffle the Test Bank
 shuffleTestBank();
@@ -21,16 +21,11 @@ shuffleTestBank();
 takeQuiz();
 
 function takeQuiz() {
-  if(score.attempt < NUM_PROBLEM) {
+  if (score.attempt < NUM_PROBLEM) {
     buildProblem(score.attempt);
+  } else {
+    displayResult();
   }
-  else {
-    finishQuiz();
-  }
-}
-
-function finishQuiz() {
-  displayResult();
 }
 
 /**************************************************** Problem Building ****************************************************/
@@ -70,7 +65,7 @@ function buildProblem(problemIndex) {
     document.getElementById("problem").appendChild(card);
   }
 
-  /************************** ANSWERS **************************/
+  /**************************************************** Choices Building ****************************************************/
   // create div
   let div2 = makeClassedElement("div", DIV_CLASS);
   div2.setAttribute("id", "choices");
@@ -80,30 +75,28 @@ function buildProblem(problemIndex) {
 
   let multipleChoice = testBank[problemIndex].choices.length;
 
-  for(let i=0; i < multipleChoice; i++)
-  switch(i) {
-    case 0:
-      let btnA = makeButton('A',testBank[problemIndex].choices[0]);
-      document.getElementById("choices").appendChild(btnA);
-      break;
-    case 1:
-      let btnB = makeButton('B',testBank[problemIndex].choices[1]);
-      document.getElementById("choices").appendChild(btnB);
-      break;
-    case 2:
-      let btnC = makeButton('C',testBank[problemIndex].choices[2]);
-      document.getElementById("choices").appendChild(btnC);
-      break;
-    case 3:
-      let btnD = makeButton('D',testBank[problemIndex].choices[3]);
-      document.getElementById("choices").appendChild(btnD);
-      break;
-  }
-
+  for (let i = 0; i < multipleChoice; i++)
+    switch (i) {
+      case 0:
+        let btnA = makeButton("A", testBank[problemIndex].choices[0]);
+        document.getElementById("choices").appendChild(btnA);
+        break;
+      case 1:
+        let btnB = makeButton("B", testBank[problemIndex].choices[1]);
+        document.getElementById("choices").appendChild(btnB);
+        break;
+      case 2:
+        let btnC = makeButton("C", testBank[problemIndex].choices[2]);
+        document.getElementById("choices").appendChild(btnC);
+        break;
+      case 3:
+        let btnD = makeButton("D", testBank[problemIndex].choices[3]);
+        document.getElementById("choices").appendChild(btnD);
+        break;
+    }
 }
 
-//removeElement("problem");
-/**************************************************** Button Functions ****************************************************/
+/**************************************************** Explanation Building ****************************************************/
 function displayExplanation() {
   // create div
   let div = makeClassedElement("div", DIV_CLASS);
@@ -114,7 +107,7 @@ function displayExplanation() {
 
   // CORRECT OR WRONG
   let correctOrWrong = document.createElement("h5");
-  correctOrWrong.innerHTML = score.solvedLast ? "You're Correct!" : "Wrong."
+  correctOrWrong.innerHTML = score.solvedLast ? "You're Correct!" : "Wrong.";
   document.getElementById("explanation").appendChild(correctOrWrong);
 
   // create explanation
@@ -124,16 +117,27 @@ function displayExplanation() {
   // append explanation
   document.getElementById("explanation").appendChild(explanation);
 
-  // SHOW BUTTONS
+  // create [Next Problem] button
+  let nextBtn = document.createElement("button");
+  nextBtn.setAttribute("class", "btn btn-outline-primary");
+  nextBtn.setAttribute("onclick", "nextBtn()");
+  nextBtn.innerHTML = "Next Problem";
+  document.getElementById("explanation").appendChild(nextBtn);
 }
 
+/**************************************************** Result Building ****************************************************/
+function displayResult() {
+  document.getElementById("problem-attempted").innerHTML = `Problems Attempted : ${score.attempt}`;
+  document.getElementById("problem-solved").innerHTML = `Problems Solved: ${score.solved}`;
+  document.getElementById("result-wrapper").setAttribute("class", "row"); 
+}
 
 /**************************************************** Button Functions ****************************************************/
 function buttonA() {
   let btnA = document.getElementById("choices").children[0];
-  let correctAnswer = testBank[score.attempt].answer
+  let correctAnswer = testBank[score.attempt].answer;
   // CORRECT
-  if(correctAnswer === 0) {
+  if (correctAnswer === 0) {
     btnA.setAttribute("class", CORRECT_BUTTON_CLASS);
     score.solved++;
     score.solvedLast = true;
@@ -141,7 +145,9 @@ function buttonA() {
   // WRONG
   else {
     btnA.setAttribute("class", WRONG_BUTTON_CLASS);
-    document.getElementById("choices").children[correctAnswer].setAttribute("class", CORRECT_BUTTON_CLASS);
+    document
+      .getElementById("choices")
+      .children[correctAnswer].setAttribute("class", CORRECT_BUTTON_CLASS);
     score.solvedLast = false;
   }
 
@@ -150,9 +156,9 @@ function buttonA() {
 
 function buttonB() {
   let btnB = document.getElementById("choices").children[1];
-  let correctAnswer = testBank[score.attempt].answer
+  let correctAnswer = testBank[score.attempt].answer;
   // CORRECT
-  if(correctAnswer === 1) {
+  if (correctAnswer === 1) {
     btnB.setAttribute("class", CORRECT_BUTTON_CLASS);
     score.solved++;
     score.solvedLast = true;
@@ -160,7 +166,9 @@ function buttonB() {
   // WRONG
   else {
     btnB.setAttribute("class", WRONG_BUTTON_CLASS);
-    document.getElementById("choices").children[correctAnswer].setAttribute("class", CORRECT_BUTTON_CLASS);
+    document
+      .getElementById("choices")
+      .children[correctAnswer].setAttribute("class", CORRECT_BUTTON_CLASS);
     score.solvedLast = false;
   }
 
@@ -169,9 +177,9 @@ function buttonB() {
 
 function buttonC() {
   let btnC = document.getElementById("choices").children[2];
-  let correctAnswer = testBank[score.attempt].answer
+  let correctAnswer = testBank[score.attempt].answer;
   // CORRECT
-  if(correctAnswer === 2) {
+  if (correctAnswer === 2) {
     btnC.setAttribute("class", CORRECT_BUTTON_CLASS);
     score.solved++;
     score.solvedLast = true;
@@ -179,7 +187,9 @@ function buttonC() {
   // WRONG
   else {
     btnC.setAttribute("class", WRONG_BUTTON_CLASS);
-    document.getElementById("choices").children[correctAnswer].setAttribute("class", CORRECT_BUTTON_CLASS);
+    document
+      .getElementById("choices")
+      .children[correctAnswer].setAttribute("class", CORRECT_BUTTON_CLASS);
     score.solvedLast = false;
   }
 
@@ -188,9 +198,9 @@ function buttonC() {
 
 function buttonD() {
   let btnD = document.getElementById("choices").children[3];
-  let correctAnswer = testBank[score.attempt].answer
+  let correctAnswer = testBank[score.attempt].answer;
   // CORRECT
-  if(correctAnswer === 3) {
+  if (correctAnswer === 3) {
     btnD.setAttribute("class", CORRECT_BUTTON_CLASS);
     score.solved++;
     score.solvedLast = true;
@@ -198,13 +208,26 @@ function buttonD() {
   // WRONG
   else {
     btnD.setAttribute("class", WRONG_BUTTON_CLASS);
-    document.getElementById("choices").children[correctAnswer].setAttribute("class", CORRECT_BUTTON_CLASS);
+    document
+      .getElementById("choices")
+      .children[correctAnswer].setAttribute("class", CORRECT_BUTTON_CLASS);
     score.solvedLast = false;
   }
 
   displayExplanation();
 }
 
+function nextBtn() {
+  score.attempt++;
+
+  // Remove Current Problem
+  removeElement("problem");
+  removeElement("choices");
+  removeElement("explanation");
+
+  // Build next problem
+  takeQuiz();
+}
 
 /**************************************************** Utility Functions ****************************************************/
 
@@ -228,7 +251,7 @@ function makeCodeLine(codeString) {
 function makeButton(ch, answerString) {
   let rtnElem = document.createElement("button");
   rtnElem.setAttribute("onclick", `button${ch}()`);
-  rtnElem.setAttribute("class", "btn btn-secondary btn-md btn-block text-left")
+  rtnElem.setAttribute("class", "btn btn-secondary btn-md btn-block text-left");
 
   rtnElem.innerHTML = `<span class="text-center bg-light text-dark rounded px-1 mr-2">${ch}</span>${answerString}`;
 
@@ -245,7 +268,7 @@ function shuffleTestBank() {
   let current = testBank.length;
   let temp, random;
 
-  while( 0 != current) {
+  while (0 != current) {
     random = Math.floor(Math.random() * current);
     current -= 1;
 
@@ -254,5 +277,3 @@ function shuffleTestBank() {
     testBank[random] = temp;
   }
 }
-
-
