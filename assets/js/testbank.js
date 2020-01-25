@@ -9,7 +9,6 @@ let testBank = [
             "<js>"
         ],
         "answer": 2,
-        "solved": false
     },
     {
         "problemStatement": "Choose the correct JavaScript syntax to change the content of the following HTML code.",
@@ -23,6 +22,5 @@ let testBank = [
             "<js>"
         ],
         "answer": 2,
-        "solved": false
     },
 ];
