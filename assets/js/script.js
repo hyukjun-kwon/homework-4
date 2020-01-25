@@ -226,7 +226,6 @@ function makeCodeLine(codeString) {
 }
 
 function makeButton(ch, answerString) {
-  console.log("run")
   let rtnElem = document.createElement("button");
   rtnElem.setAttribute("onclick", `button${ch}()`);
   rtnElem.setAttribute("class", "btn btn-secondary btn-md btn-block text-left")
