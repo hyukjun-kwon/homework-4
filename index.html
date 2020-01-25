@@ -2,21 +2,30 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css" />
 
     <title>My Page</title>
   </head>
   <body>
     <!-- Navbar -->
-    <header class="navbar navbar-expand navbar-dark bg-primary flex-column flex-md-row bd-navbar">
+    <header
+      class="navbar navbar-expand navbar-dark bg-primary flex-column flex-md-row bd-navbar"
+    >
       <!-- Name, click to move to main page -->
       <a class="navbar-brand" href="./index.html">Javascript Quiz</a>
 
@@ -27,7 +36,12 @@
             <a class="nav-link" href="./index.html">Reset</a>
           </li>
           <li class="nav-item mx-auto">
-            <a class="nav-link" target="_blank" href="https://github.com/hyukjun-kwon/homework-4">Repository</a>
+            <a
+              class="nav-link"
+              target="_blank"
+              href="https://github.com/hyukjun-kwon/homework-4"
+              >Repository</a
+            >
           </li>
         </ul>
       </div>
@@ -36,32 +50,90 @@
 
     <!-- Main -->
     <div class="container">
-        <div class="row">
-            <div class="col">
-                
+      <div id="problem-wrapper" class="row">
+        <!--
+            <div id="problem" class="col-md-8 col-sm-12 mx-auto">
+                <h5>Choose the correct JavaScript syntax to change the content of the following HTML code.</h5>
+                <div class="card text-left p-auto">
+                    <div class="card-body ">
+                        <p>&lt;p id="geek"&gt;GeeksforGeeks&lt;p&gt;</p>
+                        <p>&lt;p id="geek"&gt;GeeksforGeeks&lt;p&gt;</p>
+                        <p>&lt;p id="geek"&gt;GeeksforGeeks&lt;p&gt;</p>
+                    </div>
+                </div>
             </div>
-        </div>
+            -->
+      </div>
+      <div id="choice-wrapper" class="row mt-5">
+          <!--
+        <button type="button" onclick="buttonA()"
+          class="btn btn-secondary btn-md btn-block text-left"
+        >
+          <span class="text-center bg-light text-dark rounded pl-1 mr-2">
+            A
+          </span>
+          Block level button
+        </button>
+        <button
+          type="button" onclick="buttonB()"
+          class="btn btn-secondary btn-md btn-block text-left"
+        >
+          <span class="text-center bg-light text-dark rounded pl-1 mr-2">
+            B
+          </span>
+          Block level button
+        </button>
+        <button
+          type="button" onclick="buttonC()"
+          class="btn btn-secondary btn-md btn-block text-left"
+        >
+          <span class="text-center bg-light text-dark rounded pl-1 mr-2">
+            C
+          </span>
+          Block level button
+        </button>
+        <button
+          type="button" onclick="buttonD()"
+          class="btn btn-secondary btn-md btn-block text-left"
+        >
+          <span class="text-center bg-light text-dark rounded pl-1 mr-2">
+            D
+          </span>
+          Block level button
+        </button>
+        -->
+      </div>
+      <div id="explanation-wrapper" class="row"></div>
     </div>
     <!-- End of Main -->
 
     <!-- Footer -->
     <footer class="footer">
       <div class="text-center">
-        <span class="text-muted">UCLA BOOTCAMP FULLSTACK FLEX FULLTIME - JAN 2020 CLASS</span>
+        <span class="text-muted"
+          >UCLA BOOTCAMP FULLSTACK FLEX FULLTIME - JAN 2020 CLASS</span
+        >
       </div>
     </footer>
-
-
 
     <!-- Test bank and script -->
     <script src="assets/js/testbank.js"></script>
     <script src="assets/js/script.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
