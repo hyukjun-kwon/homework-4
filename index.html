@@ -50,7 +50,49 @@
 
     <!-- Main -->
     <div class="container">
-      <div id="problem-wrapper" class="row">
+      <div id="intro-wrapper" class="row mt-5">
+        <div class="col-md-8 col-sm-12 mx-auto">
+          <h1 class="bg-primary text-light rounded text-center py-3">
+            Javascript Quiz
+          </h1>
+          <div class="ml-5 mt-5">
+            <h3>Quiz rule:</h3>
+            <ul>
+              <li>
+                You will have <span id="total-seconds"></span> seconds to solve
+                as many problems as possible.
+              </li>
+              <li>
+                You can solve as many as
+                <span id="num-problem"></span> problems.
+              </li>
+              <li>
+                Every time you get a wrong answer, you will lose 15 seconds from
+                the time remaining.
+              </li>
+              <li>Good luck!</li>
+            </ul>
+          </div>
+          <button
+            type="button"
+            onclick="startButton()"
+            class="btn btn-outline-primary btn-lg btn-block text-center mt-5"
+          >
+            Start Quiz
+          </button>
+        </div>
+      </div>
+      <div id="timer-wrapper" class="d-none">
+        <div class="col-md-8 col-sm-12 mx-auto">
+          <h1
+            id="timer-display"
+            class="bg-primary text-light rounded text-center py-3"
+          >
+            Time Remaining: <b id="timer-time">5:00</b>
+          </h1>
+        </div>
+      </div>
+      <div id="problem-wrapper" class="row mt-5">
         <!--
             <div id="problem" class="col-md-8 col-sm-12 mx-auto">
                 <h5>Choose the correct JavaScript syntax to change the content of the following HTML code.</h5>
@@ -65,7 +107,7 @@
             -->
       </div>
       <div id="choice-wrapper" class="row mt-5">
-          <!--
+        <!--
         <button type="button" onclick="buttonA()"
           class="btn btn-secondary btn-md btn-block text-left"
         >
@@ -108,8 +150,8 @@
         <div class="col-sm-8">
           <h2>You finished the Quiz!</h2>
           <h4>Here is the result:</h4>
-          <h4 id="problem-attempted">Problems Attempted: </h4>
-          <h4 id="problem-solved">Problems Solved: </h4>
+          <h4 id="problem-attempted">Problems Attempted:</h4>
+          <h4 id="problem-solved">Problems Solved:</h4>
         </div>
       </div>
     </div>

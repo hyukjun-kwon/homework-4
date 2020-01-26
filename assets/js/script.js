@@ -5,7 +5,8 @@ const CORRECT_BUTTON_CLASS = "btn btn-success btn-md btn-block text-left";
 const WRONG_BUTTON_CLASS = "btn btn-danger btn-md btn-block text-left";
 
 // How many problem in a quiz?
-const NUM_PROBLEM = 3;
+const NUM_PROBLEM = testBank.length;
+const TOTAL_SEC = 300; // User has 300 seconds for the quiz
 
 /**************************************************** Main Function ****************************************************/
 let score = {
@@ -14,11 +15,49 @@ let score = {
   solvedLast: false
 };
 
-// Shuffle the Test Bank
-shuffleTestBank();
+document.getElementById("num-problem").innerHTML = NUM_PROBLEM;
+document.getElementById("total-seconds").innerHTML = TOTAL_SEC;
+const TOTAL_TIME = TOTAL_SEC * 5; // Timer will refresh every 200ms
+let timeRemain = TOTAL_TIME;
+let min = Math.floor(timeRemain / 300);
+let sec = Math.floor(timeRemain / 5) % 60;
+if (sec < 10) {
+  sec = "0" + sec;
+}
 
-// Begin Quiz
-takeQuiz();
+function startButton() {
+  document.getElementById("intro-wrapper").setAttribute("class", "d-none");
+  document.getElementById("timer-wrapper").setAttribute("class", "row mt-5");
+
+  document.getElementById("timer-time").innerHTML = `${min}:${sec}`;
+
+  // Start Timer function
+  let mainTimer = setInterval(function() {
+    timeRemain--;
+    min = Math.floor(timeRemain / 300);
+    sec = Math.floor(timeRemain / 5) % 60;
+    if (sec < 10) {
+      sec = "0" + sec;
+    }
+
+    document.getElementById("timer-time").innerHTML = `${min}:${sec}`;
+
+    if (timeRemain === 0 || timeRemain < 0) {
+      clearInterval(mainTimer);
+      displayResult();
+    }
+  }, 200);
+
+  takeQuiz();
+}
+
+function startQuiz() {
+  // Shuffle the Test Bank
+  shuffleTestBank();
+
+  // Begin Quiz
+  takeQuiz();
+}
 
 function takeQuiz() {
   if (score.attempt < NUM_PROBLEM) {
@@ -79,18 +118,22 @@ function buildProblem(problemIndex) {
     switch (i) {
       case 0:
         let btnA = makeButton("A", testBank[problemIndex].choices[0]);
+        btnA.setAttribute("id", "button-A");
         document.getElementById("choices").appendChild(btnA);
         break;
       case 1:
         let btnB = makeButton("B", testBank[problemIndex].choices[1]);
+        btnB.setAttribute("id", "button-B");
         document.getElementById("choices").appendChild(btnB);
         break;
       case 2:
         let btnC = makeButton("C", testBank[problemIndex].choices[2]);
+        btnC.setAttribute("id", "button-C");
         document.getElementById("choices").appendChild(btnC);
         break;
       case 3:
         let btnD = makeButton("D", testBank[problemIndex].choices[3]);
+        btnD.setAttribute("id", "button-D");
         document.getElementById("choices").appendChild(btnD);
         break;
     }
@@ -123,13 +166,30 @@ function displayExplanation() {
   nextBtn.setAttribute("onclick", "nextBtn()");
   nextBtn.innerHTML = "Next Problem";
   document.getElementById("explanation").appendChild(nextBtn);
+
+  // disable the button functions
+  document.getElementById("button-A").removeAttribute("onclick");
+  document.getElementById("button-B").removeAttribute("onclick");
+  document.getElementById("button-C").removeAttribute("onclick");
+  document.getElementById("button-D").removeAttribute("onclick");
 }
 
 /**************************************************** Result Building ****************************************************/
 function displayResult() {
-  document.getElementById("problem-attempted").innerHTML = `Problems Attempted : ${score.attempt}`;
-  document.getElementById("problem-solved").innerHTML = `Problems Solved: ${score.solved}`;
-  document.getElementById("result-wrapper").setAttribute("class", "row"); 
+  document.getElementById("timer-wrapper").setAttribute("class", "d-none");
+  document.getElementById("problem-wrapper").setAttribute("class", "d-none");
+  document.getElementById("choice-wrapper").setAttribute("class", "d-none");
+  document
+    .getElementById("explanation-wrapper")
+    .setAttribute("class", "d-none");
+
+  document.getElementById(
+    "problem-attempted"
+  ).innerHTML = `Problems Attempted : ${score.attempt}`;
+  document.getElementById(
+    "problem-solved"
+  ).innerHTML = `Problems Solved: ${score.solved}`;
+  document.getElementById("result-wrapper").setAttribute("class", "row");
 }
 
 /**************************************************** Button Functions ****************************************************/
@@ -144,6 +204,7 @@ function buttonA() {
   }
   // WRONG
   else {
+    timeRemain -= 15 * 5;
     btnA.setAttribute("class", WRONG_BUTTON_CLASS);
     document
       .getElementById("choices")
@@ -165,6 +226,7 @@ function buttonB() {
   }
   // WRONG
   else {
+    timeRemain -= 15 * 5;
     btnB.setAttribute("class", WRONG_BUTTON_CLASS);
     document
       .getElementById("choices")
@@ -186,6 +248,7 @@ function buttonC() {
   }
   // WRONG
   else {
+    timeRemain -= 15 * 5;
     btnC.setAttribute("class", WRONG_BUTTON_CLASS);
     document
       .getElementById("choices")
@@ -207,6 +270,7 @@ function buttonD() {
   }
   // WRONG
   else {
+    timeRemain -= 15 * 5;
     btnD.setAttribute("class", WRONG_BUTTON_CLASS);
     document
       .getElementById("choices")

@@ -41,31 +41,31 @@ let testBank = [
         "problemStatement": `What is the correct syntax for referring to an external script called “geek.js”?`,
         "code": [],
         "choices": [
-            `<script src=”geek.js”>`,
-            `<script href=”geek.js”>`,
-            `<script ref=”geek.js”>`,
-            `<script name=”geek.js”>`
+            `&lt;script src=”geek.js”&gt;`,
+            `&lt;script href=”geek.js”&gt;`,
+            `&lt;script ref=”geek.js”&gt;`,
+            `&lt;script name=”geek.js”&gt;`
         ],
         "answer": 0,
         "explanation": `The “src” term is used to refer to any JavaScript file.`
     },
     {
-        "problemStatement": `The external JavaScript file must contain <script> tag. True or False?`,
+        "problemStatement": `The external JavaScript file must contain &lt;script&gt; tag. True or False?`,
         "code": [],
         "choices": [
             `True`,
             `False`
         ],
         "answer": 1,
-        "explanation": `It is not necessary for any external javascript file to have <script> tag.`
+        "explanation": `It is not necessary for any external javascript file to have &lt;script&gt; tag.`
     },
     {
         "problemStatement": `Predict the output of the following JavaScript code.`,
         "code": [
-            `<script type="text/javascript">`,
+            `&lt;script type="text/javascript"&gt;`,
             `a = 8 + "8";`,
             `document.write(a);`,
-            `</script>`
+            `&lt;/script&gt;`
         ],
         "choices": [
             `16`,
@@ -79,11 +79,11 @@ let testBank = [
     {
         "problemStatement": `Predict the output of the following JavaScript code.`,
         "code": [
-            `<script type="text/javascript">`,
+            `&lt;script type="text/javascript"&gt;`,
             `var a="GeeksforGeeks";`,
             `var x=a.lastIndexOf("G");`,
             `document.write(x);`,
-            `</script>`
+            `&lt;/script&gt;`
         ],
         "choices": [
             `8`,
@@ -109,13 +109,13 @@ let testBank = [
     {
         "problemStatement": `Predict the output of the following JavaScript code.`,
         "code": [
-            `<script type="text/javascript" language="javascript">`,
+            `&lt;script type="text/javascript" language="javascript"&gt;`,
             ` `,
             `var a = "GeeksforGeeks";`,
             `var result = a.substring(4, 5);`,
             `document.write(result); `,
             ` `,
-            `</script>`
+            `&lt;/script&gt;`
         ],
         "choices": [
             `sf`,
@@ -129,14 +129,14 @@ let testBank = [
     {
         "problemStatement": `Predict the output of the following JavaScript code.`,
         "code": [
-            `<script type="text/javascript" language="javascript">`,
+            `&lt;script type="text/javascript" language="javascript"&gt;`,
             ` `,
             `var x=5;`,
             `var y=6;`,
             `var res=eval("x*y");`,
             `document.write(res);`,
             ` `,
-            `</script>`
+            `&lt;/script&gt;`
         ],
         "choices": [
             `"30"`,
@@ -146,54 +146,6 @@ let testBank = [
         ],
         "answer": 1,
         "explanation": `eval command will evaluate the operation. Here it is 5*6=30.`
-    },
-    {
-        "problemStatement": `Which of the following is not a reserved word in JavaScript?`,
-        "code": [],
-        "choices": [
-            `interface`,
-            `throws`,
-            `program`,
-            `short`
-        ],
-        "answer": 2,
-        "explanation": `In JavaScript, interface, throws and short are reserved keywords.`
-    },
-    {
-        "problemStatement": `Which of the following is not a reserved word in JavaScript?`,
-        "code": [],
-        "choices": [
-            `interface`,
-            `throws`,
-            `program`,
-            `short`
-        ],
-        "answer": 2,
-        "explanation": `In JavaScript, interface, throws and short are reserved keywords.`
-    },
-    {
-        "problemStatement": `Which of the following is not a reserved word in JavaScript?`,
-        "code": [],
-        "choices": [
-            `interface`,
-            `throws`,
-            `program`,
-            `short`
-        ],
-        "answer": 2,
-        "explanation": `In JavaScript, interface, throws and short are reserved keywords.`
-    },
-    {
-        "problemStatement": `Which of the following is not a reserved word in JavaScript?`,
-        "code": [],
-        "choices": [
-            `interface`,
-            `throws`,
-            `program`,
-            `short`
-        ],
-        "answer": 2,
-        "explanation": `In JavaScript, interface, throws and short are reserved keywords.`
     },
     {
         "problemStatement": `What is the syntax for creating a function in JavaScript named as Geekfunc?`,
@@ -224,19 +176,19 @@ let testBank = [
         If “i” is NOT equal to 5?`,
         "code": [],
         "choices": [
-            `if(i<>5)`,
-            `if i<>5`,
+            `if(i&lt;&gt;5)`,
+            `if i&lt;&gt;5`,
             `if(i!=5)`,
             `if i!=5`
         ],
         "answer": 2,
-        "explanation": `JavaScript do not accept <> operator as not equal to.`
+        "explanation": `JavaScript do not accept &lt;&gt; operator as not equal to.`
     },
     {
         "problemStatement": `What is the correct syntax for adding comments in JavaScript?`,
         "code": [],
         "choices": [
-            `<!–This is a comment–&gt;`,
+            `&lt;!–This is a comment–&gt;`,
             `//This is a comment`,
             `–This is a comment`,
             `**This is a comment**`
@@ -248,7 +200,7 @@ let testBank = [
         "problemStatement": `How to insert a multi-line comment in JavaScript?`,
         "code": [],
         "choices": [
-            `<!–This is comment line 1
+            `&lt;!–This is comment line 1
             This is comment line 2–&gt;`,
             `//This is comment line 1
             This is comment line 2//`,
@@ -287,9 +239,9 @@ let testBank = [
     {
         "problemStatement": `What will be the output of the following code?`,
         "code": [
-            `<script>`,
+            `&lt;script&gt;`,
             `document.write(typeof(24.49));`,
-            `</script>`
+            `&lt;/script&gt;`
         ],
         "choices": [
             `float`,
