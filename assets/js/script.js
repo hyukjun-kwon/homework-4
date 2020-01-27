@@ -162,7 +162,7 @@ function displayExplanation() {
 
   // create [Next Problem] button
   let nextBtn = document.createElement("button");
-  nextBtn.setAttribute("class", "btn btn-outline-primary");
+  nextBtn.setAttribute("class", "btn btn-outline-primary float-right");
   nextBtn.setAttribute("onclick", "nextBtn()");
   nextBtn.innerHTML = "Next Problem";
   document.getElementById("explanation").appendChild(nextBtn);
